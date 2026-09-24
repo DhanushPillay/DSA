@@ -1,9 +1,10 @@
 class Solution:
     def twoSum(self, nums, target):
-        d = dict()
-        for i in range(len(nums)):
-            d[nums[i]] = i
-        for i in range(len(nums)):
-            need = target - nums[i]
-            if (need in d.keys() and d[need] != i):
-                return[i, d[need]]    
+        seen = {}
+
+        for i, num in enumerate(nums):
+            need = target - num
+
+            if need in seen:
+                return[seen[need],i]
+            seen[num] = i          
